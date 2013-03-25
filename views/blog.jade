@@ -2,6 +2,8 @@ extends layout
 
 block content
     p Blog
+    p
+        a(href='/blog/new/') new
     #articles
         each article in articles
           div.article
