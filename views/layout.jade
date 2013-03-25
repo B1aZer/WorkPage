@@ -1,0 +1,20 @@
+doctype 5
+html
+  head
+    title= title
+    link(rel='stylesheet', href='/stylesheets/normalize.css')
+    link(rel='stylesheet', href='/stylesheets/main.css')
+  body
+    #container
+        #header
+            p Hi There! My name is Dmitry. 
+            p Welocme to my space.
+        #main
+            #left
+                ul 
+                    li: a(href='/') About
+                    li: a(href='/blog/') Blog
+                    li: a(href='#') SomeStuff
+            #right
+                block content
+            #footer
