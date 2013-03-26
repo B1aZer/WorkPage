@@ -7,14 +7,14 @@ html
   body
     #container
         #header
-            p Hi There! My name is Dmitry. 
+            p H<span class='whitel' >i</span> Th<span class='whitel' >e</span>r<span class='whitel' >e</span>! M<span class='whitel' >y</span> n<span class='whitel' >a</span>me <span class='whitel' >i</span>s <span class='whitel' >Dmitry</span>. 
             p Welocme to my space.
+        #left
+            ul 
+                li: a(href='/') About
+                li: a(href='/blog/') Blog
+                li: a(href='#') SomeStuff
         #main
-            #left
-                ul 
-                    li: a(href='/') About
-                    li: a(href='/blog/') Blog
-                    li: a(href='#') SomeStuff
             #right
                 block content
             #footer

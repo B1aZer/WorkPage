@@ -98,38 +98,106 @@ textarea {
   src: url('../fonts/HeaderFont.ttf');
 }
 
+html {
+    height: 100%;
+    position: relative;
+    width: 900px;
+    margin: auto;
+}    
 
 body {
-    font: 14px Georgia, "Lucida Grande", Helvetica, Arial, sans-serif;
-    background-color: #e7e7e2;
-    background-image: url('http://static3.grsites.com/archive/textures/lgrey/lgrey008.jpg') ;
+    font: 16px Palatino, 'Palatino Linotype', Georgia, Times, 'Times New Roman', serif;
+    /*background-color: #e7e7e2;*/
+    background-color: #eee;
+
+    position: absolute;
+    height: 100%;
+    
 }
 
 #container {
     width: 900px;
-    margin: auto;
     background-color: #fff;
     /*background-image: -webkit-linear-gradient(bottom, rgb(235,235,235) 30%, rgb(214,214,214) 90%);*/
+    /*background-image: url('http://static3.grsites.com/archive/textures/lgrey/lgrey008.jpg') ;*/
     padding: 20px;
-    border: 1px solid #999;
+    border-left: 1px solid #ccc;
+    border-right: 1px solid #ccc;
+    /* left frame */
+    /*margin: 0;*/
+    padding: 0;
+    overflow: hidden;
+    /*height: 100%; */
+    min-height: 100%; 
+    max-height: 100%; 
+    /**/
+    position:relative;
+    /* shadow */
+    -moz-box-shadow: 0px 0px 8px #999;
+    -webkit-box-shadow: 0px 0px 8px #999;
+    box-shadow: 0px 0px 8px #999;
+    
 }
 
 #header {
     font: 24px HeaderFont;
-    color: #555;
-    margin-bottom: 20px;
+    /*color:§ #e7e7e2;*/
+    color: #fff;
+    /*margin-bottom: 20px;*/
+    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+    background: rgba(255,255,255,0.95);
+    position: absolute;
+    width: 684px;
+    left: 201px;
+    z-index:100;
+    border-bottom: 1px solid #eee;
 }
 
 #header p {
     margin: 0;
+    text-align: center;
 }
+
+.whitel {
+    color: #eee;
+}
+
+#about p:first-letter {
+    font-size:200%;
+}
+
 
 #left {
     /*width: 20%;*/
     width: 15%;
     float: left; 
-    background-color: #555;
+    /*background-color: #555;*/
+    /* left frame */
+
+    position: absolute;
+    top: 60px;
+    bottom: 0; 
+    left: 0;
+    width: 200px; /*Width of frame div*/
+    height: 100%;
+    overflow: hidden; /*Disable scrollbars. Set to "scroll" to enable*/
+    
+
 }
+
+#main {
+    position: absolute;
+    top: 0; 
+    left: 200px; /*Set left value to WidthOfFrameDiv*/
+    right: 0;
+    bottom: 0;
+    overflow: auto; 
+    background: #fff;
+    border-left: 1px solid #eee;
+    border-top: 1px solid #eee;
+    
+    
+}    
 
 #left a:link, a:active,  a:visited {text-decoration:none; color: #ebebeb}
 #left a:hover {text-decoration:none; color: #333}
@@ -146,6 +214,15 @@ body {
 
 #footer {
     clear: both;
+}
+
+.article {
+    margin-top:100px;
+    margin-bottom:100px;
+}
+
+#blog {
+    margin-top: 80px;
 }
 
 

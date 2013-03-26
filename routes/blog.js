@@ -19,10 +19,12 @@ exports.create = function(req, res){
 
 exports.createfrom = function(req, res){
 
-    Articles.create({
+    var article = {
         title: req.param('title'),
         body: req.param('body')
-    }, function(err) {
+    }
+
+    Articles.create( article, function(err, data) {
         res.redirect('/blog/');
         }
     );

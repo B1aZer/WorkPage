@@ -9,8 +9,7 @@ var express = require('express')
   , blog = require('./routes/blog')
   , http = require('http')
   , path = require('path')
-  //, redis = require('redis')
-  //, db = redis.createClient();
+  
 
 
 var app = express();
