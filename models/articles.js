@@ -52,7 +52,6 @@ Articles.prototype.create = function(article, callback) {
     db.INCR(BLOG_POST, function (err, res) {
         var id = res;
         article.id = id;
-        console.log(article);
         db.HMSET(BLOG_POST+':'+id, article, function (err, res) {
             if (err) callback(err);
             else {

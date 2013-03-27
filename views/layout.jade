@@ -7,14 +7,15 @@ html
   body
     #container
         #header
-            p H<span class='whitel' >i</span> Th<span class='whitel' >e</span>r<span class='whitel' >e</span>! M<span class='whitel' >y</span> n<span class='whitel' >a</span>me <span class='whitel' >i</span>s <span class='whitel' >Dmitry</span>. 
-            p Welocme to my space.
+            block header
         #left
             ul 
                 li: a(href='/') About
                 li: a(href='/blog/') Blog
+                li: a(href='/blog/new/') New
                 li: a(href='#') SomeStuff
         #main
             #right
-                block content
+                #content
+                    block content
             #footer

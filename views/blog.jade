@@ -1,19 +1,16 @@
 extends layout
 
+block header
+            h1 Random Thoughts
 block content
-    #bloghead
-    #blog
-        p Blog
-        p
-            a(href='/blog/new/') new
         #articles
             each article in articles
                 - if (article) 
                   div.article
-                    div.created_at= getDate(article.created_at)
-                    div.title 
+                    h1.title 
                         a(href="/blog/"+article.id+"/")!= article.title
-                    div.body= article.body
+                    div.body!= article.body
+                    div.meta= getDate(article.created_at)
                 - else 
                   p no value
     

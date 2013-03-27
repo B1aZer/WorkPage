@@ -1,13 +1,16 @@
 extends layout
 
-block content
+block header
     h1= title
-    div.article
-        div.created_at= article.created_at
-        div.title= article.title
-        div.body= article.body
+block content
+    div.article.single
+        div.body!= article.body
+        div.meta= getDate(article.created_at)
+        div.back 
+            a(href="/blog/") Back
         //- each comment in article.comments
           div.comment
             div.person= comment.person
             div.comment= comment.comment
+
 

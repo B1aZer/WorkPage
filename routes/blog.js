@@ -3,16 +3,7 @@
  * GET Blog.
  */
 
-var Articles = require('../models/articles').Articles;
-
-exports.index = function(req, res){
-     
-    Articles.getAll( function(articles) {
-        console.log(articles);
-        res.render('blog', { 
-            title: 'Blog' 
-            , articles: articles
-            , getDate: function(dateval) {
+var getDate = function (dateval) {
                 var d = new Date(parseInt(dateval)); 
                 var curr_date = d.getDate();
                 var curr_month = d.getMonth() + 1; //Months are zero based
@@ -20,6 +11,16 @@ exports.index = function(req, res){
                 
                 return curr_date + "/" + curr_month + "/" + curr_year;;
             }
+
+var Articles = require('../models/articles').Articles;
+
+exports.index = function(req, res){
+     
+    Articles.getAll( function(articles) {
+        res.render('blog', { 
+            title: 'Blog' 
+            , articles: articles
+            , getDate: getDate 
         });
     });
 };
@@ -31,9 +32,10 @@ exports.create = function(req, res){
 
 exports.createfrom = function(req, res, next){
 
+    var body = req.param('body').replace(/\n/g, '<br />');
     var article = {
         title: req.param('title'),
-        body: req.param('body'),
+        body: body,
         created_at: (new Date()).getTime()
     }
 
@@ -51,7 +53,11 @@ exports.showpost = function (req, res, next) {
     var id = req.params.id;
     Articles.getSingleById( id, function(err, data) {
         if (err) next(err);
-        else res.render('post', {title: data.title, article: data});
+        else res.render('post', {
+            title: data.title
+            , article: data
+            , getDate: getDate 
+            });
     });
 }
 

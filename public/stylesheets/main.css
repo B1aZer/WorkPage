@@ -140,11 +140,12 @@ body {
 }
 
 #header {
-    font: 24px HeaderFont;
+    font: 22px Georgia;
     /*color:§ #e7e7e2;*/
-    color: #fff;
+    color: #888;
     /*margin-bottom: 20px;*/
-    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+    /*text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;*/
+    text-shadow: -1px 0 #555;
     background: rgba(255,255,255,0.95);
     position: absolute;
     width: 684px;
@@ -153,19 +154,13 @@ body {
     border-bottom: 1px solid #eee;
 }
 
-#header p {
+#header h1 {
     margin: 0;
-    text-align: center;
+    text-align: left;
+    margin-left: 10px;
+    margin-bottom: 5px;
+    
 }
-
-.whitel {
-    color: #eee;
-}
-
-#about p:first-letter {
-    font-size:200%;
-}
-
 
 #left {
     /*width: 20%;*/
@@ -181,8 +176,22 @@ body {
     width: 200px; /*Width of frame div*/
     height: 100%;
     overflow: hidden; /*Disable scrollbars. Set to "scroll" to enable*/
-    
+}
 
+#left a:link, #left a:active,  #left a:visited {
+    text-decoration:none;
+    color: #bbb;
+    font-size: 24px;
+    font-family: Georgia;
+}
+
+#left a:hover {
+    text-decoration:none;
+    color: #333;
+}
+
+#left ul {
+    list-style: none;
 }
 
 #main {
@@ -195,20 +204,16 @@ body {
     background: #fff;
     border-left: 1px solid #eee;
     border-top: 1px solid #eee;
-    
-    
 }    
 
-#left a:link, a:active,  a:visited {text-decoration:none; color: #ebebeb}
-#left a:hover {text-decoration:none; color: #333}
-
-
-#left ul {
-    list-style: none;
+#content {
+    margin-top: 80px;
+    margin-left: 20px;
+    margin-right: 20px;
 }
 
 #right {
-    width: 80%;
+    width: 100%;
     float: right;
 }
 
@@ -216,28 +221,70 @@ body {
     clear: both;
 }
 
+/* About */
+
+#about p:first-letter {
+    font-size:200%;
+}
+
+/* Blog */
+
+.title {
+    /*border-bottom: 1px solid #eee;*/
+    text-transform: capitalize;
+    text-indent: 5px;
+}
+
+.title a {
+    text-decoration:none;
+    color: #555;
+}
+
+.body {
+    text-indent: 5px;
+    margin-bottom: 20px;
+}
+
+.meta {
+    border-top: 1px solid #eee;
+    padding-top: 10px;
+    text-align: right;
+    font-style: italic;
+    font-size: 0.9em;
+}
+
+/* Single */
+
+.single .body {
+    border-bottom: 1px solid #eee;
+    padding-bottom: 20px;
+    margin-bottom: 10px;
+}
+
+.single .meta {
+    float:right;
+    border: 0;
+    padding: 0;
+}
+
+.single .back {
+    float:left;
+}   
+
+.single a {
+    text-decoration:none;
+    color: #bbb;
+}
+
+.single a:hover {
+    color: #222;
+}
+    
+
 .article {
-    margin-top:100px;
-    margin-bottom:100px;
+    margin-top:20px;
+    margin-bottom:40px;
 }
-
-#blog {
-    margin-top: 80px;
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 /* ==========================================================================
    Helper classes
