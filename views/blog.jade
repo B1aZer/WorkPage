@@ -8,9 +8,12 @@ block content
             a(href='/blog/new/') new
         #articles
             each article in articles
-              div.article
-                div.created_at= article.created_at
-                div.title 
-                    a(href="/blog/"+article._id)!= article.title
-                div.body= article.body
+                - if (article) 
+                  div.article
+                    div.created_at= getDate(article.created_at)
+                    div.title 
+                        a(href="/blog/"+article.id+"/")!= article.title
+                    div.body= article.body
+                - else 
+                  p no value
     
