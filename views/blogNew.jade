@@ -1,0 +1,23 @@
+extends layout
+
+block content
+    form( method="post")
+        div#newpost
+            div#editArticleSubmit
+                if (locals.article) 
+                    input(type="submit", value="Save")
+                else
+                    input(type="submit", value="Send")
+            div
+                label(for='editArticleTitle') Title :
+                if (locals.article) 
+                    input(type="text", name="title", id="editArticleTitle", value=title) 
+                else
+                    input(type="text", name="title", id="editArticleTitle")
+            div
+                label(for='editArticleBody') Body :
+                if (locals.article) 
+                    textarea( name="body", rows=20, id="editArticleBody")= article.body
+                else
+                    textarea( name="body", rows=20, id="editArticleBody")
+

@@ -1,8 +1,4 @@
 
-/*
- * GET Blog.
- */
-
 var getDate = function (dateval) {
                 var d = new Date(parseInt(dateval)); 
                 var curr_date = d.getDate();
@@ -11,6 +7,19 @@ var getDate = function (dateval) {
                 
                 return curr_date + "/" + curr_month + "/" + curr_year;;
             }
+
+var mergeObj = function (obj1, obj2) {
+    var obj3 = {};
+    for (var attrname in obj1) { obj3[attrname] = obj1[attrname]; }
+    for (var attrname in obj2) { obj3[attrname] = obj2[attrname]; }
+    return obj3;
+}
+
+var parseArticle = function (body) {
+    //var body = body.replace(/\n/g, '<br />'); 
+    var body = '<p>'+body.replace(/[\r\n]+(?=[^\r\n])/g,'</p><p>')+'</p>';
+    return body;
+}
 
 var Articles = require('../models/articles').Articles;
 
@@ -26,13 +35,13 @@ exports.index = function(req, res){
 };
 
 exports.create = function(req, res){
-     
-    res.render('blog_new', { title: 'Blog' });
+
+        res.render('blogNew', { title: 'Blog' });
 }; 
 
 exports.createfrom = function(req, res, next){
 
-    var body = req.param('body').replace(/\n/g, '<br />');
+    var body = parseArticle(req.param('body'));
     var article = {
         title: req.param('title'),
         body: body,
@@ -60,4 +69,44 @@ exports.showpost = function (req, res, next) {
             });
     });
 }
+
+exports.editpost = function (req, res, next) {
+    var id = req.params.id;
+    Articles.getSingleById( id, function(err, data) {
+        if (err) next(err);
+        else res.render('blogNew', {
+            title: data.title
+            , article: data
+            });
+    });
+}
+
+exports.editfrom = function (req, res, next) {
+    var id = req.params.id;
+    var body = parseArticle(req.param('body'));
+    var newArticle = {
+        title: req.param('title'),
+        body: body,
+    }
+    Articles.getSingleById( id, function(err, article) {
+        if (err) next(err);
+        else {
+            editedArticle = mergeObj(article, newArticle);
+            Articles.edit( editedArticle, function(err, data) {
+                if (err) next(err);
+                else res.redirect('/blog/');
+            });
+        }
+    });
+}
+
+exports.deletepost = function (req, res, next) {
+    var id = req.params.id;
+    Articles.deleteById( id, function(err, article) {
+        if (err) next(err);
+        else res.redirect('/blog/');
+    });
+}
+
+
 

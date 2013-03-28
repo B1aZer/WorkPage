@@ -10,9 +10,12 @@ html
             block header
         #left
             ul 
+                - if (!locals.user)
+                    li.login: a(href='/login/') Login
                 li: a(href='/') About
                 li: a(href='/blog/') Blog
-                li: a(href='/blog/new/') New
+                - if (locals.user)
+                    li: a(href='/blog/new/') New
                 li: a(href='#') SomeStuff
         #main
             #right

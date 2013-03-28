@@ -1,13 +1,19 @@
 extends layout
 
 block header
-    h1= title
 block content
+    div.artilceheader
+        h1= title
     div.article.single
         div.body!= article.body
         div.meta= getDate(article.created_at)
         div.back 
             a(href="/blog/") Back
+        - if (locals.user) 
+            span.space
+            a(href="/edit/"+article.id+"/") Edit
+            span.space
+            a(href="/delete/"+article.id+"/") Delete
         //- each comment in article.comments
           div.comment
             div.person= comment.person

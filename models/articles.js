@@ -56,6 +56,7 @@ Articles.prototype.create = function(article, callback) {
             if (err) callback(err);
             else {
                 var dateCreated = article.created_at;
+                // adding to srted list for future reference
                 db.ZADD(BLOG_LIST, dateCreated, id, function (err,res) {
                     callback(err, res);
                 });
@@ -63,6 +64,29 @@ Articles.prototype.create = function(article, callback) {
         });
     });
 };
+
+Articles.prototype.edit = function(article, callback) {
+    var id = article.id;
+    db.HMSET(BLOG_POST+':'+id, article, function (err, res) {
+        if (err) callback(err);
+        else {
+            callback(null, res);
+        }
+    });
+};
+
+Articles.prototype.deleteById = function(id, callback) {
+    db.DEL(BLOG_POST+':'+id, function (err, res) {
+        if (err) callback(err);
+        else {
+            db.ZREM(BLOG_LIST, id, function (err, res) {
+                if (err) allback(err); 
+                else callback(null, res);
+            });
+        }
+    });
+}
+
 
 var Articles = new Articles([
         {title: 'Post one', body: 'Body one', comments:[{author:'Bob', comment:'I love it'}, {author:'Dave', comment:'This is rubbish!'}]},

@@ -190,6 +190,10 @@ body {
     color: #333;
 }
 
+#left .login a {
+    color: #eee;
+}
+
 #left ul {
     list-style: none;
 }
@@ -232,12 +236,12 @@ body {
 .title {
     /*border-bottom: 1px solid #eee;*/
     text-transform: capitalize;
-    text-indent: 5px;
+    margin-left: 3px;
 }
 
 .title a {
     text-decoration:none;
-    color: #555;
+    color: #222;
 }
 
 .body {
@@ -279,11 +283,69 @@ body {
 .single a:hover {
     color: #222;
 }
+
+.artilceheader {
+    font: 22px Georgia;
+    color: #888;
+    text-shadow: -1px 0 #555;
+    background: rgba(255,255,255,0.95);
+    z-index: 100;
+    border-bottom: 1px solid #eee;
+    margin-top: -80px;
+    margin-bottom: 24px;
+    
+}
+.artilceheader h1 {
+    margin: 0;
+}
     
 
 .article {
     margin-top:20px;
     margin-bottom:40px;
+}
+
+/* New Post */
+
+#newpost label {
+    width: 4em;
+    float: left;
+    text-align: right;
+    margin-right: 0.5em;
+    display: block
+}    
+
+#newpost input, #newpost textarea {
+    width: 500px;
+    font-family: Palatino;
+    
+}
+
+#newpost div {
+    margin-bottom: 20px;
+}
+
+#editArticleSubmit input {
+    font-family: Geaorgia;
+    width: 65px;
+    margin-left: 71px;
+    -moz-border-radius: 10px;  
+     -webkit-border-radius: 10px;  
+     border-radius: 10px; 
+
+    background-color: #eee;
+    border: 1px solid #bbb;
+     
+    
+}
+
+/* Custom */
+
+.space {
+    padding: 0 5px;
+    border-left: 1px solid #eee;
+    margin-left: 10px;
+    
 }
 
 /* ==========================================================================
