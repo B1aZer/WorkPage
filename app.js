@@ -22,11 +22,10 @@ app.configure(function(){
     app.use(express.bodyParser());
     app.use(express.methodOverride());
     app.use(express.cookieParser('some secret secret here'));
-    app.use(express.session());
+    app.use(express.session({ secret: 'some secret secret here', cookie: { maxAge: 60000 }}));
     // user cookie
     app.use(function(req, res, next){
         if ( req.session.user ) {
-            console.log( req.session.user  )
             res.locals.user = req.session.user;
             res.locals.authenticated = ! req.session.user.anonymous;
             next();
