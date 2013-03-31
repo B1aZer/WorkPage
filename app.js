@@ -78,6 +78,7 @@ app.get('/blog/', blog.index);
 app.get('/edit/:id/', blog.editpost);
 app.post('/edit/:id/', blog.editfrom);
 app.get('/delete/:id/', checkAuth, blog.deletepost);
+app.post('/send/', routes.sendMessage);
 
 http.createServer(app).listen(app.get('port'), function(){
     console.log("Express server listening on port " + app.get('port'));

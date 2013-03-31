@@ -5,16 +5,16 @@ html
     link(rel='stylesheet', href='/stylesheets/normalize.css')
     link(rel='stylesheet', href='/stylesheets/main.css')
     script(type='text/javascript', src='/javascripts/vendor/jquery-1.9.0.min.js')
+    script(type='text/javascript', src="/javascripts/vendor/jquery.simplemodal.1.4.4.min.js")
     script(type='text/javascript', src='/javascripts/main.js')
   body
     #container
         #header
             block header
         #left
-            #photo
+            a#photolink(href='/login/') 
+                #photo
             ul 
-                - if (!locals.user)
-                    li.login: a(href='/login/') Login
                 li: a(href='/') About
                 li: a(href='/blog/') Blog
                 - if (locals.user)

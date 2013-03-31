@@ -4,31 +4,37 @@ block header
             h1 About Me
 block content
     #about
-        p Dmitry Branitskiy is a web developer. He graduated as Automated control systems engineer. And worked in various computer-oriented fields after that. He has strong programming and adminisration background, perfectiionistic attitude to own work and affection towards minimalism in design. 
+        p Dmitry Branitskiy is a web developer. He graduated as Automated control systems engineer. And worked in various computer-oriented fields after that. He has strong programming and adminisration background, perfectionistic attitude to own work and affection towards minimalism in design. 
         p Dmitry currently lives in Russia and works as a freelancer.
         p You can contanct him through:
         ul
             li 
                 span#odesk.icon 
                 span#odeskwhite.iconinverted 
-                a.linkaway(href='#', target='_blank') Odesk
+                a.linkaway(href='https://www.odesk.com/users/~0178e16620506a0d56', target='_blank') Odesk
             li 
                 span#github.icon 
                 span#githubwhite.iconinverted 
-                a.linkaway(href='#', target='_blank') Github
+                a.linkaway(href='https://github.com/B1aZer', target='_blank') Github
             li 
                 span#facebook.icon 
                 span#facebookwhite.iconinverted 
-                a.linkaway(href='#', target='_blank') Facebook
+                a.linkaway(href='https://www.facebook.com/dmitry.branitskiy', target='_blank') Facebook
             li 
                 span#skype.icon 
                 span#skypewhite.iconinverted 
-                a.linkaway(href='#', target='_blank') Skype
+                a.linkaway(href="skype:pe4ene4ko?chat") Skype
             li 
                 span#linkedin.icon 
                 span#linkedinwhite.iconinverted 
-                a.linkaway(href='#', target='_blank') Linkedin
+                a.linkaway(href='http://www.linkedin.com/in/dbran', target='_blank') Linkedin
             li 
                 span#message.icon 
                 span#messagewhite.iconinverted 
-                a.linkaway(href='#', target='_blank') Message
+                a#modal-link.linkaway(href='#') Message
+
+        #modal-send-message
+            #message-text
+                textarea
+            button#send-button send
+            button.simplemodal-close cancel
