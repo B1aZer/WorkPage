@@ -4,6 +4,10 @@ html
     title= title
     link(rel='stylesheet', href='/stylesheets/normalize.css')
     link(rel='stylesheet', href='/stylesheets/main.css')
+    link(rel="stylesheet", href="/stylesheets/font-awesome.min.css")
+    <!--[if IE 7]>
+    link(rel="stylesheet", href="/stylesheets/font-awesome-ie7.min.css")
+    <![endif]-->
     script(type='text/javascript', src='/javascripts/vendor/jquery-1.9.0.min.js')
     script(type='text/javascript', src="/javascripts/vendor/jquery.simplemodal.1.4.4.min.js")
     script(type='text/javascript', src='/javascripts/main.js')
@@ -15,11 +19,20 @@ html
             a#photolink(href='/login/') 
                 #photo
             ul 
-                li: a(href='/') About
-                li: a(href='/blog/') Blog
+                li
+                    div.cover
+                        i.icon-question-sign
+                        a(href='/') About
+                li
+                    div.cover
+                        i.icon-book
+                        a(href='/blog/') Blog
+                li
+                    div.cover
+                        i.icon-folder-open
+                        a(href='/projects/') Projects
                 - if (locals.user)
                     li: a(href='/blog/new/') New
-                li: a(href='#') SomeStuff
         #main
             #right
                 #content

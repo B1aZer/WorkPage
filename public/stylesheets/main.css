@@ -200,6 +200,18 @@ body {
     list-style: none;
 }
 
+#left ul li {
+    height: 30px;
+}
+
+#left .cover:hover {
+    border-right: 1px solid #eee;
+    width: 130px;
+    box-shadow: 5px 0px 1px #eee;
+    -moz-box-shadow: 5px 0px 1px #eee;
+    -webkit-box-shadow: 5px 0px 1px #eee;
+}
+
 #photo {
     width: 145px;
     height: 200px;
@@ -246,6 +258,19 @@ body {
 
 #photolink {
     cursor: default;
+}
+
+/* Icons */
+
+#left li i {
+    font-size: 24px;
+    color: #999;
+    margin-right: 5px;
+}
+
+#about li i {
+    color: #999;
+    margin-right: 5px;
 }
 
 /* Main section */
@@ -468,6 +493,83 @@ body {
     
 }
 
+/* Projects */
+
+#projects .project {
+    width: 300px;
+    float: left;
+    margin-right: 10px;
+    height: 400px;
+}
+
+#projects .project .content {
+    border: 1px solid #eee;
+    padding: 20px;
+    height: 290px;
+    position: relative;
+}
+
+#projects .project .content:hover {
+    /*border: 1px solid #bbb;*/
+    border-bottom: 1px solid #bbb;
+    border-right: 1px solid #bbb;
+    box-shadow: 3px 3px 10px #ddd;
+    -moz-box-shadow: 3px 3px 10px #ddd;
+    -webkit-box-shadow: 3px 3px 10px #ddd;
+}
+
+#projects .project .content .link {
+    display: none;
+}
+
+#projects .project .title, #projects .project .image, #projects .project .desc {
+    margin-bottom: 10px;
+}
+
+#projects .project .desc span {
+    font-size: small;
+    /*font-style: italic;*/
+}
+
+#projects .project .tags {
+    position: absolute;
+    bottom: 10px;
+}
+
+#projects .tag-icons {
+    font-size: 90%;
+}
+#projects .tag {
+    margin-left: 5px;
+}
+
+
+/* Single */
+
+#project .image {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+#project .image img {
+    border: 1px solid #eee;
+    padding: 20px;
+    box-shadow: 0px 0px 5px #eee;
+    -moz-box-shadow: 0px 0px 5px #eee;
+    -webkit-box-shadow: 0px 0px 5px #eee;
+}
+#project .url {
+    text-align:center;
+}
+
+#project .desctription {
+    border-top: 1px solid #eee;
+    border-bottom: 1px solid #eee;
+    margin: 20px 0 20px 0;
+}
+
+#project .desctription p {
+}
 /* Custom */
 
 .space {

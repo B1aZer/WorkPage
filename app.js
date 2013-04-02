@@ -7,6 +7,7 @@ var express = require('express')
 , routes = require('./routes')
 , user = require('./routes/user')
 , blog = require('./routes/blog')
+, projects = require('./routes/projects')
 , http = require('http')
 , path = require('path')
 , config = require('./config');
@@ -22,7 +23,7 @@ app.configure(function(){
     app.use(express.bodyParser());
     app.use(express.methodOverride());
     app.use(express.cookieParser('some secret secret here'));
-    app.use(express.session({ secret: 'some secret secret here', cookie: { maxAge: 60000 }}));
+    app.use(express.session());
     // user cookie
     app.use(function(req, res, next){
         if ( req.session.user ) {
@@ -40,6 +41,7 @@ app.configure(function(){
 });
 
 app.configure('development', function(){
+    //app.use(express.static(__dirname+'/public'));
     app.use(express.errorHandler({
         'dumpExceptions': true
         , 'showStack': true
@@ -47,7 +49,7 @@ app.configure('development', function(){
 
 });
 
-var basicAuthMessage = 'Restrict area, please identify';
+var basicAuthMessage = 'Restricted area, please identify';
 
 // The function
 var basicAuth = express.basicAuth(function(username, password) {
@@ -79,6 +81,9 @@ app.get('/edit/:id/', blog.editpost);
 app.post('/edit/:id/', blog.editfrom);
 app.get('/delete/:id/', checkAuth, blog.deletepost);
 app.post('/send/', routes.sendMessage);
+
+app.get('/projects/', projects.index);
+app.get('/projects/:id/', projects.single);
 
 http.createServer(app).listen(app.get('port'), function(){
     console.log("Express server listening on port " + app.get('port'));

@@ -27,5 +27,10 @@ $(document).ready( function () {
         });
         
     });
+
+    $(document).on('click', '#projects .content', function (e) {
+        var url = $(this).find('.link').find('a').attr('href');
+        window.location.href = url;
+    });
     
 });

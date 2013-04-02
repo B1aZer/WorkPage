@@ -1,0 +1,30 @@
+extends layout
+
+block header
+            h1=title
+block content
+        #projects
+            each project in projects
+                - if (project) 
+                  div.project
+                    h1.title 
+                        a(href="/projects/"+project.id+"/")!= project.title
+                    div.content
+                        div.link
+                            a(href="/projects/"+project.id+"/")!= project.title
+                        div.image
+                            img(src=project.image, height='150px', weight='150px')
+                        div.desc
+                            span=project.desc
+                        div.tags
+                            i.icon-tags.tag-icons
+                            - var lasti = project.tags.slice(-1)[0]
+                            each tag in project.tags
+                                if tag != lasti 
+                                    i.tag=tag
+                                    | ,
+                                else 
+                                    i.tag=tag
+                - else 
+                  p no value
+    

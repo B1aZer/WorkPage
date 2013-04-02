@@ -30,7 +30,7 @@ exports.index = function(req, res){
         req.session.user = req.user;
         res.locals.user = req.user;
     }
-    res.render('index', { title: 'Express' });
+    res.render('index', { title: config.title });
 };
 
 exports.sendMessage = function(req, res){

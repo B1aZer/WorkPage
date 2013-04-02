@@ -1,0 +1,14 @@
+extends layout
+
+block header
+        h1=title
+block content
+        #project
+            div.project.single
+                div.image
+                    img(src=project.image, height='300px', weight='100%')
+                div.url
+                    a(href=project.url, target="_blank")=project.url
+                div.desctription!= project.description
+                div.back 
+                    a(href="/projects/") Back
