@@ -33,7 +33,10 @@ html
                             i.icon-folder-open
                             a(href='/projects/') Portfolio
                     - if (locals.user)
-                        li: a(href='/blog/new/') New
+                        li 
+                            div.cover
+                                i.icon-file
+                                a(href='/blog/new/') New
                 //span#node Built with 
                     a(href="http://nodejs.org/", target="_blank") Node.js
         #main

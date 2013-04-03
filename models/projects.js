@@ -41,7 +41,7 @@ var Projects = new Projects([
             id: '3',
             title: 'Blog Platform', 
             image: '/images/projects/3.png',
-            desc: 'Blog engine written in python. Simple blog with basic functions. Was born on odesk.',
+            desc: 'Blog engine written in python. Simple blog with basic functions. Was born on Odesk.',
 
             description: '<p>Blog platform that uses <a href="http://mezzanine.jupo.org/" target="_blank">Mezzanine</a> as it\'s core. This is a two week project that is filled with dummy content, since original content is owned by the employee.</p> <p>This is an original blog site that allows users to rate celebrity couples. It was built in Python and using the Django framework. AJAX functions were used as needed. This is a HTML5 enabled backend CMS, that aims to prevent any security risks.</p>',
             date: new Date('2012', '07', '07'),
