@@ -172,12 +172,16 @@ body {
     /* left frame */
 
     position: absolute;
-    top: 60px;
+    /*top: 60px;*/
     bottom: 0; 
     left: 0;
     width: 200px; /*Width of frame div*/
     height: 100%;
     /*overflow: /*hidden; /**//*Disable /*scrollbars. /*Set /*to /*"scroll" /*to /*enable*/
+}
+
+#inner-left {
+    padding-top: 60px;
 }
 
 #left a:link, #left a:active,  #left a:visited {
@@ -206,7 +210,7 @@ body {
 
 #left .cover:hover {
     border-right: 1px solid #eee;
-    width: 130px;
+    width: 140px;
     box-shadow: 5px 0px 1px #eee;
     -moz-box-shadow: 5px 0px 1px #eee;
     -webkit-box-shadow: 5px 0px 1px #eee;
@@ -268,10 +272,23 @@ body {
     margin-right: 5px;
 }
 
-#about li i {
-    color: #999;
-    margin-right: 5px;
+#left ul {
+    padding-left:30px;
 }
+
+#left #node, #left #node a {
+    font-size: 12px;
+    font-family: Georgia;
+    
+}
+
+#left #node {
+    position: absolute;
+    bottom: 0;
+    left 0;
+    padding-left:30px;
+}
+
 
 /* Main section */
 
@@ -318,6 +335,20 @@ body {
     width:50%;
     float: left;
     height: 20px;
+}
+
+#about li i {
+    color: #999;
+    margin-right: 5px;
+}
+
+#about #skills {
+    width: 600px;
+    height: 80px;
+}
+
+#about #skills li {
+    width:20%;
 }
 
 .icon {
@@ -524,6 +555,7 @@ body {
 
 #projects .project .title, #projects .project .image, #projects .project .desc {
     margin-bottom: 10px;
+    margin-top: 0;
 }
 
 #projects .project .desc span {

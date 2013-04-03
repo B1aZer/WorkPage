@@ -27,7 +27,7 @@ exports.index = function(req, res){
      
     Projects.getAll( function(projects) {
         res.render('projects', { 
-            title: 'Projects' 
+            title: 'Portfolio' 
             , projects: projects
         });
     });

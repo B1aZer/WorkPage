@@ -16,23 +16,26 @@ html
         #header
             block header
         #left
-            a#photolink(href='/login/') 
-                #photo
-            ul 
-                li
-                    div.cover
-                        i.icon-question-sign
-                        a(href='/') About
-                li
-                    div.cover
-                        i.icon-book
-                        a(href='/blog/') Blog
-                li
-                    div.cover
-                        i.icon-folder-open
-                        a(href='/projects/') Projects
-                - if (locals.user)
-                    li: a(href='/blog/new/') New
+            #inner-left
+                a#photolink(href='/login/') 
+                    #photo
+                ul 
+                    li
+                        div.cover
+                            i.icon-question-sign
+                            a(href='/') About
+                    li
+                        div.cover
+                            i.icon-book
+                            a(href='/blog/') Journal
+                    li
+                        div.cover
+                            i.icon-folder-open
+                            a(href='/projects/') Portfolio
+                    - if (locals.user)
+                        li: a(href='/blog/new/') New
+                //span#node Built with 
+                    a(href="http://nodejs.org/", target="_blank") Node.js
         #main
             #right
                 #content

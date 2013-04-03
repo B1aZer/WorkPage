@@ -4,11 +4,28 @@ block header
             h1 About Me
 block content
     #about
-        p Dmitry Branitskiy is a web developer. He graduated as Automated control systems engineer. And worked in various computer-oriented fields after that. He has strong programming and adminisration background, perfectionistic attitude to own work and affection towards minimalism in design. 
-        p Dmitry currently lives in Russia and works as a freelancer. If you want to hire him, CV is available 
-            a(href="#") here
+        p Dmitry Branitskiy is a web developer. He graduated as Automated Control Systems engineer. And worked in various computer-oriented fields after that. He has strong programming and administration background, perfectionistic attitude to own work and affection towards minimalism in design.
+        p His main skills are:
+        ul#skills 
+            li Programming:
+                div
+                    i Python, Javascript, PHP, Delphi, C++.
+            li Frameworks:
+                div
+                    i Django, Node.js, Flask, Jquery, Backbone.
+            li Databases:
+                div 
+                    i MySQL, Redis, SQLite, Oracle, PostgreSQL.
+            li API:
+                div
+                    i Amazon, Google, Facebook, Twitter, Heroku.
+            li Environments:
+                div 
+                    i Linux/Unix, Mac, iOS (SDK), Android (SDK).
+        p Dmitry currently lives in Moscow and works as a freelancer. In case you want to hire him, CV is available 
+            a(href="https://docs.google.com/document/d/12mcGHgmuuXkEd0GhV2A-x9PpOx6XPXG3VANJJXbS2t4/edit?usp=sharing", target="_blank") here
             | .
-        p You can contanct him through:
+        p Or you can contanct him through:
         ul
             li 
                 //span#odesk.icon 
@@ -16,10 +33,10 @@ block content
                 i.icon-user
                 a.linkaway(href='https://www.odesk.com/users/~0178e16620506a0d56', target='_blank') Odesk
             li 
-                //span#github.icon 
-                //span#githubwhite.iconinverted 
-                i.icon-github-alt
-                a.linkaway(href='https://github.com/B1aZer', target='_blank') Github
+                //span#message.icon 
+                //span#messagewhite.iconinverted 
+                i.icon-envelope-alt
+                a#modal-link.linkaway(href='#') Message
             li 
                 //span#facebook.icon 
                 //span#facebookwhite.iconinverted 
@@ -36,10 +53,10 @@ block content
                 i.icon-linkedin-sign
                 a.linkaway(href='http://www.linkedin.com/in/dbran', target='_blank') Linkedin
             li 
-                //span#message.icon 
-                //span#messagewhite.iconinverted 
-                i.icon-envelope-alt
-                a#modal-link.linkaway(href='#') Message
+                //span#github.icon 
+                //span#githubwhite.iconinverted 
+                i.icon-github-alt
+                a.linkaway(href='https://github.com/B1aZer', target='_blank') Github
 
         #modal-send-message
             #message-text
