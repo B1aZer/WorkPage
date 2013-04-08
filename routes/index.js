@@ -20,11 +20,9 @@ var mailOptions = {
     html: "<b>Hello world </b>" // html body
 }
 
-
-
 /*
-* GET home page.
-*/
+ * GET home page.
+ */
 exports.index = function(req, res){
     if ( req.user && !req.session.user ) {
         req.session.user = req.user;

@@ -1,8 +1,7 @@
 
 /**
-* Module dependencies.
-*/
-
+ * Module dependencies.
+ */
 var express = require('express')
 , routes = require('./routes')
 , user = require('./routes/user')
@@ -52,7 +51,9 @@ app.configure('development', function(){
 
 var basicAuthMessage = 'Restricted area, please identify';
 
-// The function
+/** Basic authentication
+ *
+ */
 var basicAuth = express.basicAuth(function(username, password) {
     if (username === config.user.name && password === config.user.pass) {
         return true;

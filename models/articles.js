@@ -4,10 +4,17 @@ var redis = require('redis')
 var BLOG_POST = 'post'
     , BLOG_LIST = 'postings';
 
+/**
+ * Initialize with dummy data
+ * (for tests)
+ */
 Articles = function(articles){
     this.dummyData = articles || [];
 };
 
+/**
+ * Get all articles
+ */
 Articles.prototype.getAll = function(callback) {
     var that = this;
     var articles = [];
@@ -47,6 +54,9 @@ Articles.prototype.getSingleById = function(id, callback) {
 
 };
 
+/**
+ * Create new article
+ */
 Articles.prototype.create = function(article, callback) {
     //this.dummyData.push(article);
     db.INCR(BLOG_POST, function (err, res) {
@@ -65,6 +75,9 @@ Articles.prototype.create = function(article, callback) {
     });
 };
 
+/**
+ * Edit article
+ */
 Articles.prototype.edit = function(article, callback) {
     var id = article.id;
     db.HMSET(BLOG_POST+':'+id, article, function (err, res) {
@@ -74,7 +87,10 @@ Articles.prototype.edit = function(article, callback) {
         }
     });
 };
-
+           
+/**
+ * Delete single article
+ */
 Articles.prototype.deleteById = function(id, callback) {
     db.DEL(BLOG_POST+':'+id, function (err, res) {
         if (err) callback(err);
@@ -88,6 +104,9 @@ Articles.prototype.deleteById = function(id, callback) {
 }
 
 
+/**
+ * For test purpose
+ */
 var Articles = new Articles([
         {title: 'Post one', body: 'Body one', comments:[{author:'Bob', comment:'I love it'}, {author:'Dave', comment:'This is rubbish!'}]},
         {title: 'Post two', body: 'Body two'},

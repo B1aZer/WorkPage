@@ -15,7 +15,9 @@ Projects.prototype.getSingleById = function(id, callback) {
     callback(null, obj);
 };
 
-
+/**
+ * JSON database for projects
+ */
 var Projects = new Projects([
         {
             id: '1',

@@ -1,4 +1,8 @@
 
+/**
+ * Convert Date object into string
+ * @param {String} dateval Date object
+ */
 var getDate = function (dateval) {
                 var d = new Date(parseInt(dateval)); 
                 var curr_date = d.getDate();
@@ -8,6 +12,11 @@ var getDate = function (dateval) {
                 return curr_date + "/" + curr_month + "/" + curr_year;;
             }
 
+/**
+ * Merge 2 objects in 1
+ * @param {Object} obj1 Object 1
+ * @param {Object} obj2 Object 2
+ */
 var mergeObj = function (obj1, obj2) {
     var obj3 = {};
     for (var attrname in obj1) { obj3[attrname] = obj1[attrname]; }
@@ -15,6 +24,10 @@ var mergeObj = function (obj1, obj2) {
     return obj3;
 }
 
+/**
+ * Replace new lines with <p>
+ * @param {text} body Article text
+ */
 var parseArticle = function (body) {
     //var body = body.replace(/\n/g, '<br />'); 
     var body = '<p>'+body.replace(/[\r\n]+(?=[^\r\n])/g,'</p><p>')+'</p>';
@@ -53,9 +66,6 @@ exports.createfrom = function(req, res, next){
         else res.redirect('/blog/');
         }
     );
-
-    
-     
 }; 
 
 exports.showpost = function (req, res, next) {

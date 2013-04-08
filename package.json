@@ -1,7 +1,7 @@
 {
   "name": "workpage",
   "version": "0.0.1",
-  "private": true,
+  "author": "Dmitry Branitskiy <blaze.imba@gmail.com>",
   "scripts": {
     "start": "node app"
   },
