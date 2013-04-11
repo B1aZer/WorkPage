@@ -51,3 +51,6 @@ exports.sendMessage = function(req, res){
 }
 
 
+exports.test = function(req, res){
+    res.render('test', { title: 'test' });
+};

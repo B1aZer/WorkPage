@@ -87,6 +87,8 @@ app.post('/send/', routes.sendMessage);
 app.get('/projects/', projects.index);
 app.get('/projects/:id/', projects.single);
 
+app.get('/test/', routes.test);
+
 http.createServer(app).listen(app.get('port'), function(){
     console.log("Express server listening on port " + app.get('port'));
 });
