@@ -556,6 +556,7 @@ body {
 #projects .project .title, #projects .project .image, #projects .project .desc {
     margin-bottom: 10px;
     margin-top: 0;
+    line-height: 1;
 }
 
 #projects .project .desc span {
@@ -673,8 +674,15 @@ a:hover {
     border: 1px solid #555;
 }
 
+/* TEST */
 
-
+#table2 {
+	position: relative;
+}
+#table2 td, #table2 th {
+	position: absolute;
+	width: 80px;
+}
 /* ==========================================================================
    Helper classes
    ========================================================================== */
