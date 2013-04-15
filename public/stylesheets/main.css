@@ -157,7 +157,7 @@ body {
 #header h1 {
     margin: 0;
     text-align: left;
-    margin-left: 10px;
+    margin-left: 20px;
     margin-bottom: 5px;
     
 }
@@ -421,7 +421,7 @@ body {
 .title {
     /*border-bottom: 1px solid #eee;*/
     text-transform: capitalize;
-    margin-left: 3px;
+    /*margin-left: 3px;*/
 }
 
 .title a {
@@ -430,7 +430,7 @@ body {
 }
 
 .body {
-    text-indent: 5px;
+    /*text-indent: 5px;*/
     margin-bottom: 20px;
 }
 
