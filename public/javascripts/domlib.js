@@ -1,8 +1,20 @@
 /**
  * This library is a review of test questions from interview
  * @author Dmitry Branitskiy <dmitry.branitskiy@gmail.com>
+ * TODO:
+ * null in param constr
+ * interface overview
  */
 (function () {
+
+    function extend (sbclass, spclass) {
+        var F = function () {};
+        F.prototype = spclass.prototype;
+        sbclass.prototype = new f();
+        sbclass.prototype.constructor = sbclass;
+        
+        sbclass.super = spclass.prototype;
+    }
 
     /**
      * saving global object
@@ -16,10 +28,11 @@
      * @constructor
      */
     var Client = function (elem) {
-        var private1
-        ,   self = this;
+        var self = this
+        , elem = elem || '';
         // called with new
         if (this instanceof Client) {
+            console.log('new instance');
             // string passed
             if (elem.constructor === String) {
                 this.elem = global.document.getElementsByTagName(elem);
@@ -27,39 +40,45 @@
             else {
                 this.elem = elem;
             }
-            /** @private */
-            var _privateMethod = function() {
-            }
-            // priveleged method
-            this.privelegedMethod = function() {
-                private1 = 1;
-            }
-            // call array function on NodeList
-            var dupl = []
-            // create array of unique nodeNames
-            ,   nodenames = Array.prototype.filter.call(this.elem, function (el) {
-                    if (dupl.indexOf(el.nodeName) === -1) {
-                        dupl.push(el.nodeName);
-                        return true;
-                    }
-                })
-            ,   tlength = nodenames.length;
-            // dynamic methods
-            for (var i = 0; i < tlength; i++) {
-                // creating scope and saving i in it
-                (function (i) {
-                    self['find'+nodenames[i].nodeName] = function () {
-                        console.log(i);
-                        // changing color of 1st element in NodeList
-                        nodenames[i].style.background = 'yellow';
-                    }
-                }(i));
-            }
         }
         // called like fn
         // return new instance
         else {
+            console.log('function');
             return new Client(elem);
+        }
+        /** @private */
+        var _privateMethod = function() {
+        }
+        /** @private */
+        var _privateVar = 12; 
+        // priveleged method
+        this.getPrivate = function() {
+            _privateVar += 1;
+            return _privateVar;
+        }
+        // create array of unique nodeNames
+        var dupl = []
+        // call array function on NodeList
+        , nodenames = Array.prototype.filter.call(this.elem, function (el) {
+                if (dupl.indexOf(el.nodeName) === -1) {
+                    dupl.push(el.nodeName);
+                    return true;
+                }
+            })
+        , tlength = nodenames.length;
+        // dynamic methods
+        for (var i = 0; i < tlength; i++) {
+            // creating scope and saving i in it
+            (function (i) {
+                // referencing to a class variable
+                // this === window here
+                self['find'+nodenames[i].nodeName] = function () {
+                    console.log(i);
+                    // changing color of 1st element in NodeList
+                    nodenames[i].style.background = 'yellow';
+                }
+            }(i));
         }
     };
 
@@ -71,7 +90,7 @@
      */
     Client.prototype.changeColor = function (color) {
         var color = color || '#eee'
-        ,   i = this.elem.length;
+        , i = this.elem.length;
         while (i--) {
             var elem = this.elem[i];
             elem.style.color = color;
@@ -91,9 +110,9 @@
             throw Error('Provide valid names');
         }
         var elem1 = global.document.getElementById(id1)
-        ,   elem2 = global.document.getElementById(id2);
+        , elem2 = global.document.getElementById(id2);
         while(elem1.lastChild) {
-            // this will not work, because referance wont renew
+            // this will not work, because referance won't renew
             // on next iteration
             var elem = elem1.lastChild;
             // only elements
@@ -106,6 +125,23 @@
         }
     };
 
+    // TODO: subcalss
+    var ClientChild = function (elem) {
+        Client.call(this, elem);
+        //this.elem = elem;
+    }
+    // exposing all dynamic methods
+    // called with '*'
+    ClientChild.prototype = new Client();
+    ClientChild.prototype.constructor = ClientChild;
+
     /** @public */
-    return global.cl = Client;
-}())
+    /*
+    global.cl = function () {
+        return new Client(arguments);
+    }
+    */
+    global.cl = global.cl || Client;
+    global.clc = global.clc || ClientChild;
+
+}());
