@@ -1,24 +1,24 @@
 /**
  * This library is a review of test questions from interview
+ * No paramaters checking, plain and simple implementation
+ *
+ * Interface methods:
+ * @function toggleElementsById
+ * @function attachListener
+ * @function sendAJAX
+ * @function extend
+ *
+ * @example
+ * var li = cl('li');
+ * li.changeColor();
+ *
  * @author Dmitry Branitskiy <dmitry.branitskiy@gmail.com>
- * TODO:
- * null in param constr
- * interface overview
  */
 (function () {
 
-    function extend (sbclass, spclass) {
-        var F = function () {};
-        F.prototype = spclass.prototype;
-        sbclass.prototype = new f();
-        sbclass.prototype.constructor = sbclass;
-        
-        sbclass.super = spclass.prototype;
-    }
-
     /**
-     * saving global object
-     * @global 
+     * Saving global object
+     * @global
      */
     var global = this;
 
@@ -28,12 +28,12 @@
      * @constructor
      */
     var Client = function (elem) {
-        var self = this
-        , elem = elem || '';
-        // called with new
+        var self = this, 
+            elem = elem || '';
+        // Called with new
         if (this instanceof Client) {
             console.log('new instance');
-            // string passed
+            // String passed
             if (elem.constructor === String) {
                 this.elem = global.document.getElementsByTagName(elem);
             }
@@ -41,7 +41,7 @@
                 this.elem = elem;
             }
         }
-        // called like fn
+        // Called like fn
         // return new instance
         else {
             console.log('function');
@@ -49,33 +49,37 @@
         }
         /** @private */
         var _privateMethod = function() {
-        }
+        };
         /** @private */
-        var _privateVar = 12; 
-        // priveleged method
+        var _privateVar = 12;
+        /** Privileged method
+         * @public 
+         */
         this.getPrivate = function() {
             _privateVar += 1;
             return _privateVar;
-        }
-        // create array of unique nodeNames
-        var dupl = []
-        // call array function on NodeList
-        , nodenames = Array.prototype.filter.call(this.elem, function (el) {
+        };
+        // Create array of unique nodeNames
+        var dupl = [],
+        // Call array function on NodeList
+            nodenames = Array.prototype.filter.call(this.elem, function (el) {
                 if (dupl.indexOf(el.nodeName) === -1) {
                     dupl.push(el.nodeName);
                     return true;
                 }
-            })
-        , tlength = nodenames.length;
-        // dynamic methods
+            }),
+            tlength = nodenames.length;
+        /** Dynamic methods
+         * @public
+         */
         for (var i = 0; i < tlength; i++) {
-            // creating scope and saving i in it
+            // Creating scope and saving i in it
             (function (i) {
-                // referencing to a class variable
+                // Referencing to a class variable
                 // this === window here
-                self['find'+nodenames[i].nodeName] = function () {
+                self['yellow'+nodenames[i].nodeName] = function () {
                     console.log(i);
-                    // changing color of 1st element in NodeList
+                    // Changing color of 1st element in NodeList
                     nodenames[i].style.background = 'yellow';
                 }
             }(i));
@@ -89,13 +93,13 @@
      * @public
      */
     Client.prototype.changeColor = function (color) {
-        var color = color || '#eee'
-        , i = this.elem.length;
+        var color = color || '#eee',
+            i = this.elem.length;
         while (i--) {
             var elem = this.elem[i];
             elem.style.color = color;
-        }  
-        //allow chaining
+        }
+        // Allow chaining
         return this;
     };
 
@@ -109,38 +113,121 @@
         if (!(id1 && id2)) {
             throw Error('Provide valid names');
         }
-        var elem1 = global.document.getElementById(id1)
-        , elem2 = global.document.getElementById(id2);
+        var elem1 = global.document.getElementById(id1),
+            elem2 = global.document.getElementById(id2);
         while(elem1.lastChild) {
-            // this will not work, because referance won't renew
+            // This will not work, because referance won't renew
             // on next iteration
             var elem = elem1.lastChild;
-            // only elements
+            // Only elements
             if (elem1.lastChild.nodeType === 1) {
-                // appending to new list
+                // Appending to new list
                 elem2.appendChild(elem1.lastChild);
             }
-            // removing from 1st list
+            // Removing from 1st list
             elem1.removeChild(elem1.lastChild);
         }
     };
 
-    // TODO: subcalss
+    /**
+     * Extend properties of the first object
+     * with properties of second object
+     * @param {object} sbclass SubClass
+     * @param {object} spclass SuperClass
+     * @static
+     */
+    Client.extend = function (sbclass, spclass) {
+        var F = function () {};
+        F.prototype = spclass.prototype;
+        sbclass.prototype = new F();
+        sbclass.prototype.constructor = sbclass;
+
+        sbclass.super = spclass.prototype;
+        // From Pro Javascript Design Patterns
+        if(spclass.prototype.constructor == Object.prototype.constructor) {
+            spclass.prototype.constructor = spclass;
+        }
+
+    };
+
+    /**
+     * Branching used for browser inspection
+     */
+    var SingleCheck = (function () {
+        var attach,
+            request;
+        if (global.attachEvent) {
+            attach = function (element, type, listener) {
+                element.attachEvent('on'+type, listener);   
+            };
+        }
+        if (global.addEventListener) {
+            attach = function (element, type, listener) {
+                element.addEventListener(type, listener, false);   
+            };
+        }
+        if (global.XMLHttpRequest) {
+            request = function () {
+                return new global.XMLHttpRequest();
+            };
+        }
+        else {
+            request = function () {
+                return new global.ActiveXObject('Msxml2.XMLHTTP')();
+            };
+        }
+        return {
+                attach: attach,
+                request: request
+        }
+    }());
+
+    /**
+     * TODO: check in IE6
+     * Attach event to an element
+     * @param {element} element Element Node
+     * @param {string} type Event type
+     * @param {function} callback Callback function
+     * @static
+     */
+    Client.attachListener = function (element, type, callback) {
+        var handler = function (e) {
+            var event = e || global.event;
+            callback.call(element, event, type);
+        };
+        SingleCheck.attach(element, type, handler);
+    };
+
+    /**
+     * TODO: check in IE6
+     * Create Ajax Request
+     * onreadystatechange checking can be added on demand
+     * @param {string} url Url
+     * @param {string} type Request type
+     * @param {function} callback Callback function
+     * @static
+     */
+    Client.sendAJAX = function (url, type, callback) {
+        var request = SingleCheck.request();
+        request.onload = function () {
+            callback(this.responseText);
+        }
+        request.open(type, url, true);
+        request.send();
+    };
+
+    /** Subcalss of parent class */
     var ClientChild = function (elem) {
-        Client.call(this, elem);
-        //this.elem = elem;
+        ClientChild.super.constructor.call(this, elem);
     }
-    // exposing all dynamic methods
-    // called with '*'
-    ClientChild.prototype = new Client();
-    ClientChild.prototype.constructor = ClientChild;
+    Client.extend(ClientChild,Client);
 
     /** @public */
-    /*
-    global.cl = function () {
-        return new Client(arguments);
-    }
-    */
+    /**
+     * global.cl = function () {
+     *    return new Client(arguments);
+     * }
+     */
     global.cl = global.cl || Client;
     global.clc = global.clc || ClientChild;
 
