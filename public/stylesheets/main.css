@@ -683,6 +683,24 @@ a:hover {
 	position: absolute;
 	width: 80px;
 }
+
+#ratings {
+}
+
+#ratings span {
+    background-image: url('/images/controls/stars.png');
+    display: inline-block;
+    width: 15px;
+    height: 15px;
+    background-position: 0 0;
+    cursor: pointer;
+}
+#ratings span:hover {
+    background-position: 0px 15px;
+}
+
+
+
 /* ==========================================================================
    Helper classes
    ========================================================================== */

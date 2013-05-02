@@ -18,18 +18,17 @@
 
     /**
      * Saving global object
-     * @global
      */
-    var global = this;
+    var global = this,
 
     /**
      * Represents main Class
      * @param {string|nodelist} elem Passing elements to class representation
      * @constructor
      */
-    var Client = function (elem) {
-        var self = this, 
-            elem = elem || '';
+        Client = function (elem) {
+        var self = this; 
+        elem = elem || '';
         // Called with new
         if (this instanceof Client) {
             console.log('new instance');
@@ -68,11 +67,12 @@
                     return true;
                 }
             }),
-            tlength = nodenames.length;
+            tlength = nodenames.length,
+            i;
         /** Dynamic methods
          * @public
          */
-        for (var i = 0; i < tlength; i++) {
+        for (i = 0; i < tlength; i++) {
             // Creating scope and saving i in it
             (function (i) {
                 // Referencing to a class variable
@@ -81,7 +81,7 @@
                     console.log(i);
                     // Changing color of 1st element in NodeList
                     nodenames[i].style.background = 'yellow';
-                }
+                };
             }(i));
         }
     };
@@ -93,11 +93,11 @@
      * @public
      */
     Client.prototype.changeColor = function (color) {
-        var color = color || '#eee',
-            i = this.elem.length;
+        color = color || '#eee';
+        var i = this.elem.length;
         while (i--) {
-            var elem = this.elem[i];
-            elem.style.color = color;
+            /*var elem = this.elem[i];*/
+            this.elem[i].style.color = color;
         }
         // Allow chaining
         return this;
@@ -111,14 +111,14 @@
      */
     Client.toggleElementsById = function (id1, id2) {
         if (!(id1 && id2)) {
-            throw Error('Provide valid names');
+            throw new Error('Provide valid names');
         }
         var elem1 = global.document.getElementById(id1),
             elem2 = global.document.getElementById(id2);
         while(elem1.lastChild) {
             // This will not work, because referance won't renew
             // on next iteration
-            var elem = elem1.lastChild;
+            /*var elem = elem1.lastChild;*/
             // Only elements
             if (elem1.lastChild.nodeType === 1) {
                 // Appending to new list
@@ -142,7 +142,7 @@
         sbclass.prototype = new F();
         sbclass.prototype.constructor = sbclass;
 
-        sbclass.super = spclass.prototype;
+        sbclass.spr = spclass.prototype;
         // From Pro Javascript Design Patterns
         if(spclass.prototype.constructor == Object.prototype.constructor) {
             spclass.prototype.constructor = spclass;
@@ -152,20 +152,28 @@
 
     /**
      * Branching used for browser inspection
+     * used instead of reassigning methods on calls
      */
     var SingleCheck = (function () {
         var attach,
             request;
-        if (global.attachEvent) {
-            attach = function (element, type, listener) {
-                element.attachEvent('on'+type, listener);   
-            };
-        }
+        // Events
         if (global.addEventListener) {
             attach = function (element, type, listener) {
                 element.addEventListener(type, listener, false);   
             };
         }
+        else if (global.attachEvent) {
+            attach = function (element, type, listener) {
+                element.attachEvent('on'+type, listener);   
+            };
+        }
+        else {
+            attach = function (element, type, listener) {
+                element['on'+type] = listener;   
+            };
+        }
+        // XHR
         if (global.XMLHttpRequest) {
             request = function () {
                 return new global.XMLHttpRequest();
@@ -179,7 +187,7 @@
         return {
                 attach: attach,
                 request: request
-        }
+        };
     }());
 
     /**
@@ -211,24 +219,32 @@
         var request = SingleCheck.request();
         request.onload = function () {
             callback(this.responseText);
-        }
+        };
+        /*
+        request.onreadystatechange = function() {
+            if(request.readyState !== 4) return; 
+            (request.status === 200) ?
+                callback(request.responseText), 
+                callback(request.status);
+        };
+        */
         request.open(type, url, true);
         request.send();
     };
 
     /** Subcalss of parent class */
     var ClientChild = function (elem) {
-        ClientChild.super.constructor.call(this, elem);
-    }
-    Client.extend(ClientChild,Client);
+        ClientChild.spr.constructor.call(this, elem);
+    };
+    Client.extend(ClientChild, Client);
 
     /** @public */
-    /**
-     * global.cl = function () {
-     *    return new Client(arguments);
-     * }
-     */
-    global.cl = global.cl || Client;
-    global.clc = global.clc || ClientChild;
+    /*
+    global.cl = function () {
+        return new Client(arguments);
+    }
+    */
+    global.cl = Client;
+    global.clc = ClientChild; //cl.c
 
 }());
