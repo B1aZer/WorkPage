@@ -230,7 +230,7 @@
         };
         */
         request.onreadystatechange = function() {
-            if(request.readyState !== 4) return; 
+            if (request.readyState !== 4) return; 
             (request.status === 200) ?
                 callback(request.responseText): 
                 callback(request.status);
@@ -255,6 +255,6 @@
     }
     */
     global.cl = Client;
-    global.clc = ClientChild; //cl.c
+    global.clc = ClientChild;
 
 }());
