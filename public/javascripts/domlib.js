@@ -26,7 +26,7 @@
      * @param {string|nodelist} elem Passing elements to class representation
      * @constructor
      */
-        Client = function (elem) {
+    Client = function (elem) {
         var self = this; 
         elem = elem || '';
         // Called with new
@@ -61,14 +61,14 @@
         // Create array of unique nodeNames
         var dupl = [],
         // Call array function on NodeList
-            nodenames = Array.prototype.filter.call(this.elem, function (el) {
-                if (dupl.indexOf(el.nodeName) === -1) {
-                    dupl.push(el.nodeName);
-                    return true;
-                }
-            }),
-            tlength = nodenames.length,
-            i;
+        nodenames = Array.prototype.filter.call(this.elem, function (el) {
+            if (dupl.indexOf(el.nodeName) === -1) {
+                dupl.push(el.nodeName);
+                return true;
+            }
+        }),
+        tlength = nodenames.length,
+        i;
         /** Dynamic methods
          * @public
          */
@@ -111,10 +111,10 @@
      */
     Client.toggleElementsById = function (id1, id2) {
         if (!(id1 && id2)) {
-            throw new Error('Provide valid names');
+            throw new Error('Provide valid names!');
         }
         var elem1 = global.document.getElementById(id1),
-            elem2 = global.document.getElementById(id2);
+        elem2 = global.document.getElementById(id2);
         while(elem1.lastChild) {
             // This will not work, because referance won't renew
             // on next iteration
@@ -156,7 +156,7 @@
      */
     var SingleCheck = (function () {
         var attach,
-            request;
+        request;
         // Events
         if (global.addEventListener) {
             attach = function (element, type, listener) {
@@ -193,12 +193,18 @@
     /**
      * TODO: check in IE6
      * Attach event to an element
-     * @param {element} element Element Node
+     * @param {element | string} element Element Node or Element Id
      * @param {string} type Event type
      * @param {function} callback Callback function
      * @static
      */
     Client.attachListener = function (element, type, callback) {
+        if (!(element && type && callback)) {
+            throw new Error('Provide valid arguments!');
+        }
+        if (typeof element === 'string') {
+            element = global.document.getElementById(element);
+        }
         var handler = function (e) {
             var event = e || global.event;
             callback.call(element, event, type);
@@ -216,23 +222,29 @@
      * @static
      */
     Client.sendAJAX = function (url, type, callback) {
+        if (!(url && type && callback)) {
+            throw new Error('Provide valid arguments!');
+        }
         var request = SingleCheck.request();
+        /*
         request.onload = function () {
             callback(this.responseText);
         };
-        /*
+        */
         request.onreadystatechange = function() {
             if(request.readyState !== 4) return; 
             (request.status === 200) ?
-                callback(request.responseText), 
+                callback(request.responseText): 
                 callback(request.status);
         };
-        */
         request.open(type, url, true);
-        request.send();
+        request.send(null);
     };
 
-    /** Subcalss of parent class */
+    /** 
+     * Subcalss of parent class 
+     * should be called with new
+     * */
     var ClientChild = function (elem) {
         ClientChild.spr.constructor.call(this, elem);
     };
