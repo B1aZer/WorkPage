@@ -191,7 +191,6 @@
     }());
 
     /**
-     * TODO: check in IE6
      * Attach event to an element
      * @param {element | string} element Element Node or Element Id
      * @param {string} type Event type
@@ -213,7 +212,6 @@
     };
 
     /**
-     * TODO: check in IE6
      * Create Ajax Request
      * onreadystatechange checking can be added on demand
      * @param {string} url Url
