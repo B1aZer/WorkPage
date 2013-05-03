@@ -181,7 +181,7 @@
         }
         else {
             request = function () {
-                return new global.ActiveXObject('Msxml2.XMLHTTP')();
+                return new global.ActiveXObject('Microsoft.XMLHTTP');
             };
         }
         return {
