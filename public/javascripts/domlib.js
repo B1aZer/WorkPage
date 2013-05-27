@@ -109,13 +109,13 @@
      * @param {string} id2 Id of second element
      * @static
      */
-    Client.toggleElementsById = function (id1, id2) {
+    Client.moveElementsBetweenNodes = function (id1, id2) {
         if (!(id1 && id2)) {
             throw new Error('Provide valid names!');
         }
-        var elem1 = global.document.getElementById(id1),
-        elem2 = global.document.getElementById(id2);
-        while(elem1.lastChild) {
+        var elem1 = document.getElementById(id1),
+        elem2 = document.getElementById(id2);
+        while(elem1.lastChild && elem1.lastChild.nodeType === 1) {
             // This will not work, because referance won't renew
             // on next iteration
             /*var elem = elem1.lastChild;*/
@@ -125,7 +125,7 @@
                 elem2.appendChild(elem1.lastChild);
             }
             // Removing from 1st list
-            elem1.removeChild(elem1.lastChild);
+            /*elem1.removeChild(elem1.lastChild);*/
         }
     };
 
