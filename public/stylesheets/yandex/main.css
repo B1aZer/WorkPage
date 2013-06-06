@@ -1,0 +1,428 @@
+body { 
+    padding-left: 20px;
+}
+
+p {
+    clear: both;
+}
+
+#main .container {
+    clear: both;
+    margin: 20px 20px;
+}
+
+/************ Cross Rating ****************/
+
+#ratings input {
+    position:absolute;
+}
+
+#ratings label {
+    position: relative;
+    height: 1em;
+    width: 1em;
+    overflow: hidden;
+    float: left;
+    text-indent: -999em;
+    /* Images off */
+    background: teal;
+    /*margin-right: 1px;*/
+    border-right: 1px solid white;
+}
+
+#ratings img {
+    width: 1em;
+    height: 3em;
+    position: absolute;
+    top: 0;
+    left: 0;
+    cursor: pointer;
+    /* White bg will only work with images on, 
+     * used to hide span text.
+     * This is not very convenient,
+     * because we will have to change color dependeing
+     * on background color, but its better than using js
+     */
+    background: url('/images/yandex/blank.png');
+}
+
+#ratings .no_star {
+    background: #ccc;
+}
+
+#ratings .no_star img {
+    top: 0em;
+}
+
+#ratings .active_star img {
+    top: -1em;
+}
+
+#ratings label:hover img,
+#ratings .hover_star img {
+    top: -2em;
+}
+
+#ratings label.hover_star  {
+    background: teal;
+}
+
+fieldset {
+    border: 0;
+}
+legend {
+    text-indent: -999em;
+}
+
+#JSen #ratings br {
+    display:none;
+}
+
+#JSen #ratings input {
+    left:-999em;
+}
+
+#JSdis #ratings input {
+    left: -1.6em;
+}
+
+#JSdis #ratings label {
+    overflow: visible; 
+    background: transparent;
+    text-indent: 0;
+}
+
+#JSdis #ratings img {
+    width: 0;
+}
+
+/************ CSS Rating ****************/
+
+#cssratings {
+    float:left;
+}
+
+/* :not(:checked) is a filter, so that browsers that don’t support :checked don’t 
+follow these rules. Every browser that supports :checked also supports :not(), so
+it doesn’t make the test unnecessarily selective */
+#cssratings:not(:checked) > input {
+    position: absolute;
+    text-indent: -999em;
+    clip: rect(1px 1px 1px 1px); /* IE6, IE7 */
+    clip: rect(1px, 1px, 1px, 1px);
+    
+}
+
+#cssratings:not(:checked) > label {
+    float: right;
+    width: 0.8em;
+    padding: 0 .1em;
+    overflow: hidden;
+    white-space: nowrap;
+    cursor: pointer;
+    line-height: 1.2;
+    color: #aaa;
+}
+
+#cssratings:not(:checked) > label:before {
+    content: '★ ';
+}
+
+#cssratings > input:checked ~ label {
+    color: #F8CE00;
+}
+
+#cssratings:not(:checked) > label:hover, 
+#cssratings:not(:checked) > label:hover ~ label {
+    color: #FFA500;
+}
+
+/************ Progress Bar ****************/
+
+.progress {
+    height: 14px;
+    width: 200px;
+    -moz-border-radius: 20px; 
+    -webkit-border-radius: 20px; 
+    border-radius: 20px;
+    position: relative;
+    overflow: hidden;
+    border: 1px solid #eee;
+}
+
+.boxshadow .progress {
+    border: none;
+    -moz-box-shadow: inset 0 1px 2px 1px rgba(0,0,0,.1);
+    -webkit-box-shadow: inset 0 1px 2px 1px rgba(0,0,0,.1);
+    box-shadow: inset 0 1px 2px 1px rgba(0,0,0,.1);
+}
+
+.progress span {
+    position: absolute;
+    width: 100%;
+    top:0;
+    text-align: center;
+    font-size: small;
+}
+
+.bar {
+    width: 0%;
+    height: 100%;
+    background-color: lime;
+    -moz-border-radius: 20px; 
+    -webkit-border-radius: 20px; 
+    border-radius: 20px;
+}
+
+/************ Buttons ****************/
+
+/* firefox outline fix */
+button::-moz-focus-inner ,
+input::-moz-focus-inner {
+  border: 0;
+}
+
+
+.btn {
+    text-align: center;
+    vertical-align: middle;
+    cursor: pointer;
+    padding: 4px 16px;
+
+    margin-bottom: 0; 
+    font-size: 12px;
+    font-family: sans-serif;
+
+    -moz-border-radius: 10px; 
+    -webkit-border-radius: 10px; 
+    border-radius: 10px;
+
+    border: 1px solid #cccccc;
+    border-color: #e6e6e6 #e6e6e6 #bfbfbf;
+    border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+    border-bottom-color: #b3b3b3;
+
+    background-repeat: repeat-x;
+    background-color: #f5f5f5;
+    background-image: -moz-linear-gradient(top, #ffffff, #e6e6e6);
+    background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#ffffff), to(#e6e6e6));
+    background-image: -webkit-linear-gradient(top, #ffffff, #e6e6e6);
+    background-image: -o-linear-gradient(top, #ffffff, #e6e6e6);
+    background-image: linear-gradient(to bottom, #ffffff, #e6e6e6);
+    filter:  progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr='#ffffff', endColorstr='#e6e6e6');
+}
+
+.btn:hover,
+.btn:focus {
+    color: #333;
+    text-decoration: none;
+    background-position: 0 -15px;
+    background-color: #e6e6e6;
+    
+}
+
+.btn.active, 
+.btn:active {
+    background-image: none;
+    outline: 0;
+    position: relative;
+    top: 1px;
+}
+
+.boxshadow .btn.active, 
+.boxshadow .btn:active {
+    top: 0;
+    -webkit-box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.25), 0 1px 2px rgba(0, 0, 0, 0.05);
+    -moz-box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.25), 0 1px 2px rgba(0, 0, 0, 0.05);
+    box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.25), 0 1px 2px rgba(0, 0, 0, 0.05);
+}
+
+.btn-green {
+    background-color: #7fbf4d;
+    background-image: -moz-linear-gradient(top, #7fbf4d, #63a62f);
+    background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#7fbf4d), to(#63a62f));
+    background-image: -webkit-linear-gradient(top, #7fbf4d, #63a62f);
+    background-image: -o-linear-gradient(top, #7fbf4d, #63a62f);
+    background-image: linear-gradient(to bottom, #7fbf4d, #63a62f);
+    filter:  progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr='#7fbf4d', endColorstr='#63a62f');
+}
+
+.btn-green:hover,
+.btn-green:focus { 
+    background-color: #63a62f;
+}
+
+.btn-red {
+    background-color: #ee432e;
+    background-image: -moz-linear-gradient(top, #ee432e, #c51901);
+    background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#ee432e), to(#c51901));
+    background-image: -webkit-linear-gradient(top, #ee432e, #c51901);
+    background-image: -o-linear-gradient(top, #ee432e, #c51901);
+    background-image: linear-gradient(to bottom, #ee432e, #c51901);
+    filter:  progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr='#ee432e', endColorstr='#c51901');
+}
+
+.btn-red:hover,
+.btn-red:focus { 
+    background-color: #c51901;
+}
+
+/************ Icons ****************/
+
+.iconlist li {
+    list-style-type: none;
+    float: left;
+    position: relative;
+    width: 120px;
+    height: 120px;
+}
+.iconlist .icon {
+    background: transparent url(/images/yandex/icons.png) no-repeat 0 3px;
+    width: 120px;
+    height: 120px;
+    position: absolute;
+}
+
+/* fixing image cropping */
+.iconlist .chrome-padding {
+    padding-right: 10px;
+}
+
+.iconlist .ie-right {
+    float: right;
+}
+
+.iconlist .safari {
+    background-position: -5px -118px;
+    height: 122px;
+}
+
+.iconlist .firefox {
+    background-position: -5px -242px;
+}
+
+.iconlist .chrome {
+    background-position: 0px -365px;
+    /* fixing image cropping */
+    padding-right: 5px;
+}
+
+.iconlist .ie {
+    background-position: -10px -486px;
+    float: right;
+}
+
+.iconlist div.blank {
+    background-image: url('/images/yandex/blank.png');
+}
+
+.iconlist div.blank span {
+    position: relative;
+    z-index:-1;
+} 
+
+/* img tag icons */
+
+.iconimagelist li {
+    width: 120px;
+    height: 120px;
+    overflow: hidden;
+    position: relative;
+    float: left;
+}
+
+.iconimagelist .safari {
+    height: 122px;
+}   
+
+.iconimagelist .ie {
+    float: right;
+}
+
+.iconimagelist img {
+    top: 3px;
+    position: absolute;
+    background: white;
+}
+
+.iconimagelist .safari img {
+    top: -118px;
+    left: -5px;
+}
+
+.iconimagelist .firefox img {
+    top: -242px;
+    left: -5px;
+}
+
+.iconimagelist .chrome img {
+    top: -365px;
+}
+
+.iconimagelist .chrome {
+    padding: 0 10px 0 0px;
+}
+
+.iconimagelist .ie img {
+    top: -486px;
+    left: -10px;
+}
+
+/* icon colors */
+
+.red {
+    color: red;
+}
+
+.green {
+    color: green;
+}
+
+.yellow {
+    color: yellow;
+}
+
+.orange {
+    color: orange;
+}
+
+.gray {
+    color: gray;
+}
+
+.blue {
+    color: blue;
+}
+
+/************ Text ****************/
+
+#text-control {
+    font-family: sans-serif;
+    font-size: 14px;
+}
+
+#text-control p {
+    text-indent: 1em;
+}
+
+#text-control h2 {
+    width: 360px;
+}
+#text-control .column {
+    width: 360px;
+    float: left;
+    margin-right: 100px;
+}
+
+#text-control ul {
+    list-style-image: url('/images/yandex/dash.png');
+}
+
+#text-control ul .link {
+    color: blue;
+    text-decoration: underline;
+}
+
+#text-control ul .dotted span {
+    border-bottom: 1px dotted #000;
+}

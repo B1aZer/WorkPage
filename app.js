@@ -88,6 +88,7 @@ app.get('/projects/', projects.index);
 app.get('/projects/:id/', projects.single);
 
 app.get('/test/', routes.test);
+app.get('/yandex/', routes.yandex);
 
 http.createServer(app).listen(app.get('port'), function(){
     console.log("Express server listening on port " + app.get('port'));

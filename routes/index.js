@@ -54,3 +54,7 @@ exports.sendMessage = function(req, res){
 exports.test = function(req, res){
     res.render('test', { title: 'test' });
 };
+
+exports.yandex = function(req, res){
+    res.render('yandex', { title: 'yandex' });
+};

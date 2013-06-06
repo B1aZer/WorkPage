@@ -1,0 +1,148 @@
+!!! 5
+html#JSdis
+head
+    title Examples
+    meta(charset='utf-8')
+    meta(name='author', content='Dmitry Branitskiy')
+    link(href='/stylesheets/yandex/main.css', media='all', type='text/css', rel='stylesheet')
+    //
+       checking for box-shadow, used in progress bar and buttons (3,4) 
+    script(src='/javascripts/yandex/modernizr.custom.js', type='text/javascript')
+    //
+       used for ratings (2.1) and ie png 
+    script(src='/javascripts/yandex/main.js', type='text/javascript')
+    //if lt IE 9
+      style
+        .btn {
+        margin: 5px 5px;
+        }
+  body
+    h1 Решение тестового задания для верстальщика
+    ol#main
+      li.container
+        h3 Введение
+        p
+          a(href='http://yuri.ya.ru/replies.xml?item_no=4484', target='_blank') Ссылка
+          | на само задание.
+        p
+          | В данном решении основным приоритетом являлась кроссбраузерность. Поэтому в примерах 2 и 5 представлено два варианта.
+        p Проверялось в следующих браузерах: IE 6.0, FF 3.0, Chrome 4.0, Opera 9.5.
+        p
+      li#control-tab.container
+        h3 Оценки
+        p 1. Используются спрайты и JavaScript для установки оценки.
+        fieldset#ratings
+          legend Rating
+          label#star1.active_star(title='1 star of 5')
+            img(src='/images/yandex/stars.png', width='0', height='1', alt='1 star')
+            input(type='radio', name='stars', value='1_5')
+            | 1/5
+          br
+          label#star2.active_star(title='2 stars of 5')
+            img(src='/images/yandex/stars.png', width='0', height='1', alt='2 stars')
+            input(type='radio', name='stars', value='2_5', checked='checked')
+            | 2/5
+          br
+          label#star3.no_star(title='3 stars of 5')
+            img(src='/images/yandex/stars.png', width='0', height='1', alt='3 stars')
+            input(type='radio', name='stars', value='3_5')
+            | 3/5
+          br
+          label#star4.no_star(title='4 stars of 5')
+            img(src='/images/yandex/stars.png', width='0', height='1', alt='4 stars')
+            input(type='radio', name='stars', value='4_5')
+            | 4/5
+          br
+          label#star5.no_star(title='5 stars of 5')
+            img(src='/images/yandex/stars.png', width='0', height='1', alt='5 stars')
+            input(type='radio', name='stars', value='5_5')
+            | 5/5
+        p 2. Используются css селекторы и специальные символы.
+        fieldset#cssratings
+          legend CSS3 Rating
+          input#cssstar5(type='radio', name='cssstars', value='5_5')
+          label(title='5 stars of 5', for='cssstar5') 5/5
+          input#cssstar4(type='radio', name='cssstars', value='4_5')
+          label(title='4 stars of 5', for='cssstar4') 4/5
+          input#cssstar3(type='radio', name='cssstars', value='3_5')
+          label(title='3 stars of 5', for='cssstar3') 3/5
+          input#cssstar2(type='radio', name='cssstars', value='2_5', checked='checked')
+          label(title='2 stars of 5', for='cssstar2') 2/5
+          input#cssstar1(type='radio', name='cssstars', value='1_5')
+          label(title='1 star of 5', for='cssstar1') 1/5
+      li#progress-tab.container
+        h3 Прогресс-бар
+        .progress
+          .bar(style='width: 20%;')
+          span  20% 
+      li#button-tab.container
+        h3 Кнопки
+        button.btn Кнопка
+        input.btn.btn-green(type='button', value='Кнопка')
+        button.btn.btn-red Кнопка
+      li#icons-tab.container
+        h3 Иконки
+        p 1. Backgound image и blank image.
+        ul#iconsbacklist.iconlist
+          li.chrome-padding
+            .blank
+              .icon.chrome
+              span.green Ch
+              span.red ro
+              span.yellow me
+          li
+            .blank
+              .icon.firefox
+              span.orange Firefox
+          li
+            .blank
+              .icon.opera
+              span.red Opera
+          li
+            .blank
+              .icon.safari
+              span.gray Safari
+          li.ie-right
+            .blank
+              .icon.ie
+              span.blue Internet Explorer
+        p 2. Img и onError event.
+        ul#iconimglist.iconimagelist
+          li.chrome
+            img(src='/images/yandex/icons.png', alt='chrome', onerror='this.style.display = \'none\';')
+            span.green Ch
+            span.red ro
+            span.yellow me
+          li.firefox
+            img(src='/images/yandex/icons.png', alt='firefox', onerror='this.style.display = \'none\';')
+            span.orange Firefox
+          li.opera
+            img(src='/images/yandex/icons.png', alt='opera', onerror='this.style.display = \'none\';')
+            span.red Opera
+          li.safari
+            img(src='/images/yandex/icons.png', alt='safari', onerror='this.style.display = \'none\';')
+            span.gray Safari
+          li.ie
+            img(src='/images/yandex/icons.png', alt='ie', onerror='this.style.display = \'none\';')
+            span.blue Internet Explorer
+      li#text-tab.container
+        h3 Текст
+        #text-control
+          h2 Тема: «Сюжетный анапест: основные моменты»
+          .column
+            p
+              | Нельзя восстановить истинной хронологической последовательности событий, потому что мелькание мыслей параллельно. Структура аллитерирует мелодический реформаторский пафос, однако дальнейшее развитие приемов декодирования мы находим в работах академика В.Виноградова. Аллюзия наблюдаема. Аллитерация, как бы это ни казалось парадоксальным, параллельна. Мифопорождающее текстовое устройство прочно вызывает эпитет, причём сам Тредиаковский свои стихи мыслил как  „стихотворное дополнение” к книге Тальмана.
+            p
+              | Речевой акт традиционно осознаёт музыкальный дольник, но не рифмами. Различное расположение просветляет мелодический образ, таким образом постепенно смыкается с сюжетом. Силлабо-тоника, в первом приближении, просветляет мелодический ямб, таким образом в некоторых случаях образуются рефрены, кольцевые композиции, анафоры.
+          .column
+            p
+              | Представленный лексико-семантический анализ является психолингвистическим в своей основе, но мифопорождающее текстовое устройство аллитерирует мифологический генезис свободного стиха, об этом свидетельствуют краткость и завершенность формы, бессюжетность, своеобразие тематического развертывания.
+            p
+              | Драма, по определению отражает брахикаталектический стих, хотя в существование или актуальность этого он не верит, а моделирует собственную реальность. Лексика осознаёт литературный палимпсест, об этом свидетельствуют краткость и завершенность формы, бессюжетность, своеобразие тематического развертывания.
+            ul
+              li Курит ли трупка мой
+              li.link из трупка тфой пихтишь
+              li.dotted
+                span Или мой кафе пил
+              li тфой в щашешка сидишь
+
