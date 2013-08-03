@@ -256,5 +256,6 @@
     */
     global.cl = Client;
     global.clc = ClientChild;
+    global.SC= SingleCheck;
 
 }());
