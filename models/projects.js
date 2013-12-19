@@ -25,9 +25,9 @@ var Projects = new Projects([
             image: '/images/projects/10.png',
             desc: 'Berkeley Software Design Inc. was a corporation which developed, sold licenses for, and supported BSD/OS, a commercial and partially proprietary variant of the BSD Unix operating system for PC compatible computer systems.',
             description: '<p>This is a new redesign of iX Systems\'s site. Powered by <a href="http://mezzanine.jupo.org/" target="_blank">Mezzanine</a> on back and <a href="http://angularjs.org/" target="_blank">AngularJS</a> on front.</p>',
-            date: new Date('2013', '02', '28'),
+            date: new Date('2013', '12', '18'),
             tags: ['django', 'mezzanine', 'angularJS'],
-            url: 'http://http://www.ixsystems.com/'
+            url: 'http://www.ixsystems.com/'
         },
         {
             id: '1',
