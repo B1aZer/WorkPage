@@ -20,6 +20,16 @@ Projects.prototype.getSingleById = function(id, callback) {
  */
 var Projects = new Projects([
         {
+            id: '10',
+            title: 'iX Systems', 
+            image: '/images/projects/10.png',
+            desc: 'Berkeley Software Design Inc. was a corporation which developed, sold licenses for, and supported BSD/OS, a commercial and partially proprietary variant of the BSD Unix operating system for PC compatible computer systems.',
+            description: '<p>This is a new redesign of iX Systems\'s site. Powered by <a href="http://mezzanine.jupo.org/" target="_blank">Mezzanine</a> on back and <a href="http://angularjs.org/" target="_blank">AngularJS</a> on front.</p>',
+            date: new Date('2013', '02', '28'),
+            tags: ['django', 'python', 'mezzanine', 'javascript', 'angularJS'],
+            url: 'http://http://www.ixsystems.com/'
+        },
+        {
             id: '1',
             title: 'LionFace', 
             image: '/images/projects/1.png',
