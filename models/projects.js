@@ -20,7 +20,7 @@ Projects.prototype.getSingleById = function(id, callback) {
  */
 var Projects = new Projects([
         {
-            id: '10',
+            id: '1',
             title: 'iX Systems', 
             image: '/images/projects/10.png',
             desc: 'Berkeley Software Design Inc. was a corporation which developed, sold licenses for, and supported BSD/OS, a commercial and partially proprietary variant of the BSD Unix operating system for PC compatible computer systems.',
@@ -30,7 +30,7 @@ var Projects = new Projects([
             url: 'http://www.ixsystems.com/'
         },
         {
-            id: '1',
+            id: '2',
             title: 'LionFace', 
             image: '/images/projects/1.png',
             desc: 'Lionface is a new-age social startup. There are three primary goals of Lionface: maintain an environment free of visual clutter, protect and respect people\'s privacy down to the smallest detail, and contribute to the community in a meaningful and positive way.',
@@ -40,7 +40,7 @@ var Projects = new Projects([
             url: 'http://lionface.org'
         },
         {
-            id: '2',
+            id: '3',
             title: 'JoinMe', 
             image: '/images/projects/2.png',
             desc: 'JoinMe is a Kikstarter analogue. It has reddit-like categories structure and geotagging features. This is a side project, was born as a proof of concept.',
@@ -50,7 +50,7 @@ var Projects = new Projects([
             url: 'http://vivid-beach-2176.herokuapp.com/'
         },
         {
-            id: '3',
+            id: '4',
             title: 'Blog Platform', 
             image: '/images/projects/3.png',
             desc: 'Blog engine written in python. Simple blog with basic functions. Was born on Odesk.',
@@ -61,7 +61,7 @@ var Projects = new Projects([
             url: 'http://pure-cloud-1424.herokuapp.com/'
         },
         {
-            id: '4',
+            id: '5',
             title: 'Pretty Girls', 
             image: '/images/projects/4.png',
             desc: 'Pretty Girls is a simple Flash project. Uses fancy template and background music. Was born as a proof of concept.',
@@ -71,7 +71,7 @@ var Projects = new Projects([
             url: 'http://pretty-girls.appspot.com/'
         },
         {
-            id: '5',
+            id: '6',
             title: 'Domain Database', 
             image: '/images/projects/5.png',
             desc: 'Simple web database. Project was born on Odesk.',
@@ -81,7 +81,7 @@ var Projects = new Projects([
             url: 'http://shielded-basin-7432.herokuapp.com/'
         },
         {
-            id: '6',
+            id: '7',
             title: 'Greeting Card', 
             image: '/images/projects/6.png',
             desc: 'Simple Greeting Card made for a freind.',
@@ -91,7 +91,7 @@ var Projects = new Projects([
             url: 'http://severe-wind-7082.herokuapp.com/'
         },
         {
-            id: '7',
+            id: '8',
             title: 'Social Feed', 
             image: '/images/projects/7.png',
             desc: 'Social Feed is an aggregator for social websites. Was born as a proof of concept.',
@@ -101,7 +101,7 @@ var Projects = new Projects([
             url: 'http://furious-winter-6262.herokuapp.com/'
         },
         {
-            id: '8',
+            id: '9',
             title: 'WordPress Blog', 
             image: '/images/projects/8.png',
             desc: 'WordPress blog with custom plugins and design. Was born as a proof of concept.',
